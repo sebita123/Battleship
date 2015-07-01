@@ -9,9 +9,12 @@ animation: animatedBackground 40s linear infinite;
 	
 }
 header{
-	background-image: url(Imagenes/logo1.png);
+	margin-top: 0 auto;
+	background-image: url(Imagenes/logo13.png);
 	height: 98px;
 	animation: animatedBackground 30s linear infinite;
+	border-bottom: 0px;
+	color: transparent;
 }
 
 header h1{

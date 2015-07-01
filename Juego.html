@@ -10,9 +10,11 @@
         <link rel="stylesheet" href="Estilo.css">
 
     </head>
-    <body>
+    <body><audio id="miaudio">
+       <source src="audios/Medal_Of_Honor_European_Assault_Soundtrack_-_Main_Theme_(HQ).mp3" type="audio/mpeg">
+       </audio>
         <div class="container-fluid">
-            <header class="page-header shadowe ">
+            <header class="page-header top shadowe ">
                 &nbsp;
             </header>
             <div class="row">
@@ -111,6 +113,10 @@
 
 
             $(document).ready(function () {
+				
+				var audio=document.getElementById("miaudio");
+				
+				audio.play();
 
                 for (var j = 0; j < 11; j++) {
                     for (var k = 0; k < 6; k++) {
