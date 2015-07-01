@@ -1,12 +1,58 @@
+@keyframes animatedBackground {
+	from { background-position: 1 1; }
+	to { background-position: 100% 0; }
+}
 
 body{
-	background-image: 
-		url(Imagenes/11649296_1021613811204700_1670809098_o.jpg);
+background-image: url(Imagenes/fondo.png) ;
+animation: animatedBackground 30s linear infinite;
 	
-	
+}
+header{
+	background-image: url(Imagenes/7_bullet.png);
+	background-repeat: repeat;
+	background-size: auto;
+	animation: animatedBackground 30s linear infinite;
 }
 
 header h1{
 	color: white;
 	
 }
+
+
+.contenedor{
+float: left;
+width: 330px;
+height: 360px;
+border-radius: 10px;
+margin-left: 40px;
+margin-top: 20px;
+transform: perspective( 600px ) rotateX(25deg );
+	 box-shadow:  0 5px 5px #313131, 0 9px 0 #757575, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(255,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
+
+}
+
+.left{
+	float: left;
+	width: 30px;
+	height: 30px;
+	border: solid 1px;
+}
+
+.left:hover{
+	
+	border: outset 1px black;
+box-shadow: inset 0px 2px 15px red;
+	
+}
+
+.mover{
+	transform: perspective( 600px ) rotateX(25deg );
+	
+}
+.shadowe{
+	box-shadow:  0 5px 5px #313131, 0 9px 0 #393939, 0px 9px 10px rgba(0,0,0,0.40), inset 0px 2px 9px rgba(255,255,255,0.40), inset 0 -2px 9px rgba(0,0,0,0.40);
+	
+}
+
