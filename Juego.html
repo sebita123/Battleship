@@ -13,6 +13,9 @@
     <body><audio id="miaudio">
        <source src="audios/Medal_Of_Honor_European_Assault_Soundtrack_-_Main_Theme_(HQ).mp3" type="audio/mpeg">
        </audio>
+       <audio id="miaudio2">
+       <source src="audios/call_of_duty_sonido_caja_misteriosa.mp3" type="audio/mpeg">
+       </audio>
         <div class="container-fluid">
             <header class="page-header top shadowe ">
                 &nbsp;
@@ -120,7 +123,7 @@
 
                 for (var j = 0; j < 11; j++) {
                     for (var k = 0; k < 6; k++) {
-                        $(".contenedor").append("<div class='left' id='x'></div>");
+                        $(".contenedor").append("<div class='left' id='x' onmouseover='sonar(this)'></div>");
                         document.getElementById("x").id = ["p" + j + "" + k];
                         var temporal = document.getElementById("p" + j + "" + k);
 						temporal.isaccesible=false;
@@ -251,6 +254,15 @@
 					
 				}
 			
+			}
+			
+			function sonar(x){
+				var audio=document.getElementById("miaudio2");
+				audio.play();
+				$(x).onmousedown(function(){
+					
+					audio.stop();
+				});
 			}
 
         </script>
