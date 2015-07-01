@@ -5,13 +5,12 @@
 
 body{
 background-image: url(Imagenes/fondo.png) ;
-animation: animatedBackground 30s linear infinite;
+animation: animatedBackground 40s linear infinite;
 	
 }
 header{
-	background-image: url(Imagenes/7_bullet.png);
-	background-repeat: repeat;
-	background-size: auto;
+	background-image: url(Imagenes/logo1.png);
+	height: 98px;
 	animation: animatedBackground 30s linear infinite;
 }
 
