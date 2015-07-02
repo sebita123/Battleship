@@ -71,61 +71,75 @@
                     </div>
                 </div>
                 <div class="col-xs-6">
-
+                <div class="col-xs-1" id="barco1"  disabled="disabled">jajajaaj</div>
+                <div class="col-xs-1" id="barco2" disabled="disabled"></div>
+                <div class="col-xs-1" id="barco3" disabled="disabled">jajajaaj</div>
+                <div class="col-xs-1" id="barco4" disabled="disabled">jajajaaj</div>
+                <div class="col-xs-1" id="barco5" disabled="disabled">jajajaaj</div>
                 </div>
             </div>	
         </div>
         <script>
-            var barco1 = {
+            var barco1=document.getElementById("barco1");
+			barco1= {
                 nombre: "barc1",
                 estado: false,
-                posicion: []
+                posicion: 1
             }
-            var barco2 = {
+            var barco2 =document.getElementById("barco2"); 
+			
+			barco2.at={
                 nombre: "barc1",
                 estado: false,
-                posicion: null
+                posicion: 2
             }
-            var barco3 = {
+            var barco3 =document.getElementById("barco3"); 
+			barco3.at={
                 nombre: "barc1",
                 estado: false,
-                posicion: null
+                posicion: 3
             }
-            var barco4 = {
+            var barco4 = document.getElementById("barco4");
+			barco4.at={
                 nombre: "barc1",
                 estado: false,
-                posicion: null
+                posicion: 4
             }
-            var barco5 = {
+            var barco5 =document.getElementById("barco5");
+			barco5.at={
                 nombre: "barc1",
                 estado: false,
-                posicion: null
+                posicion: 5
             }
             var barcototal = [barco1, barco2, barco3, barco4, barco5];
 
             var jugador1 = {
 				turno:true,
-                barcos: barcototal
+                barcos: barcototal,
+				primerturno:true
                 
             };
             var jugador2 = {
                 turno:false,
-                barcos: barcototal
+                barcos: barcototal,
+				primerturno:false
                 
             }
-
-
+			
+			
             $(document).ready(function () {
 				
 				var audio=document.getElementById("miaudio");
 				
-				audio.play();
+				//audio.play();
 
                 for (var j = 0; j < 11; j++) {
                     for (var k = 0; k < 6; k++) {
-                        $(".contenedor").append("<div class='left' id='x' onmouseover='sonar(this)'></div>");
-                        document.getElementById("x").id = ["p" + j + "" + k];
-                        var temporal = document.getElementById("p" + j + "" + k);
+                        $(".contenedor").append("<div class='left' id='x' ></div>");
+                        document.getElementById("x").id = "p" + [j + "" + k];
+                        var temporal = document.getElementById("p" +[ j + "" + k]);
+						temporal.siguiente=document.getElementById("p" + [j+1+""+ k]);
+						temporal.anterior=document.getElementById("p" + [j-1 + "" + k]);
 						temporal.isaccesible=false;
                         $(temporal).css("background-image", "url('Imagenes/Baldosa.png')");
                     }
@@ -135,13 +149,18 @@
                     for (var k = 0; k < 6; k++) {
                         $(".contenedor").append("<div class='left' id='x'></div>");
                         document.getElementById("x").id = ["d" + j + "" + k];
-                        var temporal = document.getElementById("d" + j + "" + k);
+                        var temporal = document.getElementById("d" +[ j + "" + k]);
+						
 						temporal.isaccesible=false;
-                        $(temporal).css("background-image", "url('Imagenes/Baldosa.png')");
+						temporal.siguiente=document.getElementById("d" + [j+1 + "" + k]);
+						$(temporal).css("background-image", "url('Imagenes/Baldosa.png')");
                     }
                 }
+				
+				
+				
 
-                jugador1.inicio = true;
+                
 
 
 
@@ -152,17 +171,12 @@
             var f = 0;
             var inicio
             function comenzar() {
-				$("#turno1").attr("disabled",true);
-				if(jugador1.turno==true){
-					
-					var x=jugador1;
-					window.alert("turno de "+jugador1)
-					
-					
-				}
-				else if(jugador2.turno==true){
-					var x=jugador2;
-					
+			
+				if(jugador1.primerturno==true){
+					for(var i=0;i<jugador1.barcos.length;i++){
+						$(jugador1.barcos[i]).attr("disabled",false);
+						$(jugador1.barcos[i]).attr("onclick","posicionar(this)");
+					}
 				}
 				
                 inicio = setInterval(function () {
@@ -200,70 +214,46 @@
                     }
                 }, 1000);
             }
+			
+			function posicionar(x){
+				if(x.at.estado==false){
+				for(var i=0;i<jugador1.barcos.length;i++){
+					if(x!=jugador1.barcos[i]){
+						$(jugador1.barcos[i]).attr("onclick",false);
+						
+					}
+				}
+					var numero=x.at.posicion;
+					
+					for (var j = 0; j < 11; j++) {
+                    for (var k = 0; k < 6; k++) {
+						var ob=document.getElementById("p" +[ j + "" + k]);
+						$(ob).attr("onmouseover","calcularespacio(this,4)");
+						window.alert(ob.siguiente);
+					}
+					}
+				x.at.estado=true;
+				}
+				else{
+					window.alert("ya fue seleccionado :)");
+				}
+				
+			}
+			
+			function calcularespacio(x,y){
+				var f=x;
+				for(var i=0;i<y;i++){
+					window.alert(f.siguiente); 
+					$(f).css("background-image","none");
+					f=f.siguiente;
+				}
+			}
 
             function fin() {
-                
-				if(jugador1.turno==true){
-					var x=verificar(jugador1);
-					if(x==false){
-						jugador2.turno=true;
-					}
-				}
-				else if(jugador2.turno==true){
-					var x=verificar(jugador2);
-					if(x==false){
-						jugador1.turno=true;
-					}
-				}
 				
 
             }
-            function verificar(x) {
-				var y=false;
-				for(var i=0;i<x.barcos.length;i++){
-					if(x.barcos[i].estado==false){
-						y=true;
-						window.alert("falta mover el barco "+x.barcos[i].nombre);
-					}
-				}
-				if(y==false){
-				clearInterval(inicio);
-                $(".reloj").html("00:00");
-                reloj = 0;
-                f = 0;
-				}
-				return y;
-			}
-			
-			function calcularespacio(){
-			if(jugador1.turno==true){
-				for(var i=0;i<11;i++){
-					for(var j=0;j<6;j++){
-						var x=document.getElementById("p"+i+""+j);
-						x.isaccesible=true;
-					}
-				}
-			}
-				else{
-					for(var i=0;i<11;i++){
-					for(var j=0;j<6;j++){
-						var x=document.getElementById("d"+i+""+j);
-						x.isaccesible=true;
-					}
-				}
-					
-				}
-			
-			}
-			
-			function sonar(x){
-				var audio=document.getElementById("miaudio2");
-				audio.play();
-				$(x).onmousedown(function(){
-					
-					audio.stop();
-				});
-			}
+   
 
         </script>
     </body>

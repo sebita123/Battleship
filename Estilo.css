@@ -6,6 +6,7 @@
 body{
 background-image: url(Imagenes/fondo.png) ;
 animation: animatedBackground 40s linear infinite;
+	transform: perspective( 3000px ) rotateY(0deg );
 	
 }
 header{
@@ -15,6 +16,7 @@ header{
 	animation: animatedBackground 30s linear infinite;
 	border-bottom: 0px;
 	color: transparent;
+	
 }
 
 header h1{
@@ -30,7 +32,7 @@ height: 360px;
 border-radius: 10px;
 margin-left: 40px;
 margin-top: 20px;
-transform: perspective( 600px ) rotateX(25deg );
+transform: perspective( 600px ) rotateX(25deg ) ;
 	 box-shadow:  0 5px 5px #313131, 0 9px 0 #757575, 0px 9px 10px rgba(0,0,0,0.4), inset 0px 2px 9px rgba(255,255,255,0.2), inset 0 -2px 9px rgba(0,0,0,0.2);
 
 }
