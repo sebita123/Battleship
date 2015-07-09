@@ -4,7 +4,7 @@ function comenzaranimacion(){
 	var lienzo=canvas.getContext("2d");
 	canvas.width=window.innerWidth;
 	canvas.height=window.innerHeight;
-	alert(canvas.height);
+	
 	$(canvas).css("visibility","visible");
 	var cantidad=0;
 	var img=new Image();
@@ -13,10 +13,11 @@ function comenzaranimacion(){
 	img.height=50;
 	var posx=0;
 	var posy=0;
+	var array="**********************";
+	array.split("");
 	var intervalo=setInterval(function(){
-		var rgba="rgba(0,0,0,"+(Math.random() *0.100)+")";
-		lienzo.clearRect(0,0,canvas.width,canvas.height);
-		lienzo.drawImage(img,posx,posy,50,50);
+	lienzo.clearRect(0,0,canvas.width,canvas.height);	
+	lienzo.drawImage(img,posx,posy,50,50);
 		lienzo.drawImage(img,posx+290,posy+50,50,50);
 		lienzo.drawImage(img,posx+390,posy+100,50,50);
 		lienzo.drawImage(img,posx+600,posy+150,50,50);
@@ -24,16 +25,16 @@ function comenzaranimacion(){
 		lienzo.drawImage(img,posx+800,posy+250,50,50);
 		lienzo.drawImage(img,posx+900,posy+300,50,50);
 		lienzo.drawImage(img,posx+1000,posy+350,50,50);
-		posx+=2;
+		posx+=5;
 		posy+=5;
-		if(posy>670){
-			posy=-2
-			posx=-2;
-			
+		if(posx>canvas.height){
+			posx=10;
+			posy=10;
 		}
-	},1000/50);
+	},1000/33);
 	
 }
+
 
 function animartexto(){
 	var canvas=document.getElementById("animartexto");

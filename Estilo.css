@@ -19,6 +19,10 @@ header{
 	
 }
 
+#cnagata{
+	width: 100%;
+}
+
 #barco1{
 	z-index: 0;
 	overflow-x: visible;
@@ -67,6 +71,7 @@ transform: perspective( 600px ) rotateX(25deg ) ;
 	background-color: transparent;
 	z-index: 2;
 	position: absolute;
+	visibility: hidden;
 }
 
 .barco1{
